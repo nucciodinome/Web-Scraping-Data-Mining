@@ -1,4 +1,4 @@
-# Web Scraping and Data Mining: a gentle introduction
+# Web Scraping and Data Mining: A gentle introduction
 
 **Welcome to this short tutorial on Web Scraping and Data Mining techniques!**
 
