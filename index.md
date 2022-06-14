@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to this short tutorial on Web Scraping and Data Mining techniques!
 
 You can use the [editor on GitHub](https://github.com/nucciodinome/Web-Scraping-Data-Mining/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
