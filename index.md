@@ -2,33 +2,45 @@
 
 **Welcome to this short tutorial on Web Scraping and Data Mining techniques!**
 
-You can use the [editor on GitHub](https://github.com/nucciodinome/Web-Scraping-Data-Mining/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+You can use the [Google Cloud Python Platform](https://colab.research.google.com/) to start you scraping project
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Web Scraping
+Open a new notebook in Colab!
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Data Source
+Open a new webpage and go to [WSJ](https://www.wsj.com/search?query=energy&mod=searchresults_viewallresults)  to inspect data to scrape
 
 ```markdown
 Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+import sys
+sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver')
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import NoSuchElementException
+from webdriver_manager.chrome import ChromeDriverManager
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
 
-- Bulleted
-- List
+prefs = {
+    "download.open_pdf_in_system_reader": False,
+    "download.prompt_for_download": True,
+    "plugins.always_open_pdf_externally": False
+}
+chrome_options.add_experimental_option(
+    "prefs", prefs
+)
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+driver = webdriver.Chrome('chromedriver', options=chrome_options)
+driver.implicitly_wait(5)
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+
 
 
 ### Support or Contact
