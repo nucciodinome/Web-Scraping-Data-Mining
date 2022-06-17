@@ -11,8 +11,28 @@ Open a new notebook in Colab!
 ## Data Source
 Open a new webpage and go to [WSJ](https://www.wsj.com/search?query=energy&mod=searchresults_viewallresults)  to inspect data to scrape
 
+## Import libraries
+
 ```markdown
-Syntax highlighted code block
+
+import bs4
+from bs4 import BeautifulSoup
+import requests
+import re
+import csv
+import pandas as pd
+import numpy as np
+import time
+from bs4 import BeautifulSoup, SoupStrainer
+import requests
+from bs4 import BeautifulSoup as bs
+
+```
+
+
+## Web Driver Settings
+
+```markdown
 
 import sys
 sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver')
@@ -40,8 +60,27 @@ driver = webdriver.Chrome('chromedriver', options=chrome_options)
 driver.implicitly_wait(5)
 ```
 
+element_list = []
 
 
+## Doing a Soup
+
+```markdown
+for page in range(1,5):
+    
+    page_url = "https://www.wsj.com/search?query=energy&mod=searchresults_viewallresults&" + str(page)
+    driver.get(page_url)
+    page_source = driver.page_source
+    soup = bs(page_source, 'lxml')
+    titles = soup.find_all('div',attrs = {'WSJTheme--search-combined-headline-summary--1bmOvoTg '})
+
+    for title in titles:
+        element_list.append([title.get_text()])
+
+
+
+df = pd.DataFrame(element_list) 
+```
 
 ### Support or Contact
 
