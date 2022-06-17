@@ -60,19 +60,21 @@ driver = webdriver.Chrome('chromedriver', options=chrome_options)
 driver.implicitly_wait(5)
 ```
 
-element_list = []
+
 
 
 ## Doing a Soup
 
 ```markdown
-for page in range(1,5):
+
+element_list = []
+for page in range(1,50):
     
     page_url = "https://www.wsj.com/search?query=energy&mod=searchresults_viewallresults&" + str(page)
     driver.get(page_url)
     page_source = driver.page_source
     soup = bs(page_source, 'lxml')
-    titles = soup.find_all('div',attrs = {'WSJTheme--search-combined-headline-summary--1bmOvoTg '})
+    titles = soup.find_all('div',attrs = {'???'})
 
     for title in titles:
         element_list.append([title.get_text()])
